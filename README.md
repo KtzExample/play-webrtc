@@ -1,4 +1,4 @@
-play-webrtc
+play-webrtc with https and wss
 ==================
 
 WebRTC is awesome!  But if you are here you already know that.  Just to review webRTC offers voice video and data transmission directly between peers that support the protocol.  This include modern browsers (chrome, FF, opera) as well as open source code that include builds for android, ios, linux, mac, and windows.
@@ -25,10 +25,21 @@ https://code.google.com/p/rfc5766-turn-server/wiki/turnserver
 ### A Note on websockets:
 In a production environment you will want your websocket to be a secure connection.  The reasons for this go beyond just encrypting your data.  Websocket data that is now encrypted will fall victim to routers and proxies that have “smart” http caching policies.  This will ultimately render your websocket useless in these environments.  The solution is to use wss:// and no ws://
 
+### Https
+After Chrome 50, Webrtc in insecure mode(http and ws) has deprecated in remote.(But localhost still valid!)
 
+You can see details [hear](https://www.chromium.org/Home/chromium-security/deprecating-powerful-features-on-insecure-origins).
 
 Setup
 -----
+
+Just type
+
+```bash
+$ bin/activator run -Dhttps.port=9443
+```
+
+And open in browser [https://localhost:9443](https://localhost:9443)
 
 1. [Download Typesafe Activator](http://typesafe.com/platform/getstarted) (or copy it over from a USB)
 2. Extract the zip and run the `activator` or `activator.bat` script from a non-interactive shell
